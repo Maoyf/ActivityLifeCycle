@@ -12,27 +12,32 @@ import android.widget.Toast;
 public class MaoActivity extends AppCompatActivity {
     private static final String TAG = "MaoActivity";
     public static final String BOOK_NAME_OF_CATEGORY_PHYSICAL="booknameofcategoryphysical";
+    private  Button mButton;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_mao);
         Log.d(TAG, "onCreate: 执行了");
-        Button button = (Button) findViewById(R.id.activity_mao_button);
+        mButton = (Button) findViewById(R.id.activity_mao_button);
         final EditText editText = (EditText) findViewById(R.id.activity_mao_edittext);
-        button.setOnClickListener(new View.OnClickListener() {
+        mButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-               //Intent intent = new Intent(MaoActivity.this, ActivitySecond.class);
-                //startActivity(intent);
-                //Toast.makeText(MaoActivity.this, "单击按钮", Toast.LENGTH_SHORT).show();
-                 // String data="传送数据";
+                Log.d(TAG, "onClick: ");
+
                   Intent intent=new Intent(MaoActivity.this,ActivitySecond.class);
                   intent.putExtra(BOOK_NAME_OF_CATEGORY_PHYSICAL,editText.getText().toString());
-                  startActivity(intent);
+                  startActivityForResult(intent,0);
 
 
             }
         });
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        String name=data.getStringExtra("back");
+        Toast.makeText(this,name,Toast.LENGTH_SHORT).show();
     }
 
     @Override
