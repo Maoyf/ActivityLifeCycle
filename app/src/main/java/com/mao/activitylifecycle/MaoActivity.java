@@ -13,30 +13,47 @@ public class MaoActivity extends AppCompatActivity {
     private static final String TAG = "MaoActivity";
     public static final String BOOK_NAME_OF_CATEGORY_PHYSICAL="booknameofcategoryphysical";
     private  Button mButton;
+    private EditText mEditText;
+    private Button mThirdButton;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_mao);
         Log.d(TAG, "onCreate: 执行了");
         mButton = (Button) findViewById(R.id.activity_mao_button);
-        final EditText editText = (EditText) findViewById(R.id.activity_mao_edittext);
+        mEditText = (EditText) findViewById(R.id.activity_mao_edittext);
+
         mButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Log.d(TAG, "onClick: ");
-
+                  Log.d(TAG, "onClick: 执行了");
                   Intent intent=new Intent(MaoActivity.this,ActivitySecond.class);
-                  intent.putExtra(BOOK_NAME_OF_CATEGORY_PHYSICAL,editText.getText().toString());
+                  intent.putExtra(BOOK_NAME_OF_CATEGORY_PHYSICAL,mEditText.getText().toString());
                   startActivityForResult(intent,0);
+            }
+        });
 
-
+        mThirdButton = (Button) findViewById(R.id.activity_mao_third_button);
+        mThirdButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MaoActivity.this, ThirdActivity.class);
+                startActivityForResult(intent, 1);
             }
         });
     }
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        String name=data.getStringExtra("back");
+        String name = "";
+        switch (requestCode) {
+            case 0:
+                name = data.getStringExtra("back");
+                break;
+            case 1:
+                name = data.getStringExtra("backThird");
+        }
         Toast.makeText(this,name,Toast.LENGTH_SHORT).show();
     }
 

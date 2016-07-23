@@ -21,7 +21,6 @@ public class ActivitySecond extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.second_activity);
         String inforcontent=getIntent().getStringExtra(MaoActivity.BOOK_NAME_OF_CATEGORY_PHYSICAL);
-        //Toast.makeText(ActivitySecond.this, inforcontent, Toast.LENGTH_SHORT).show();
         mtextView = (TextView) findViewById(R.id.second_activity_text_view);
         mtextView.setText(inforcontent);
 

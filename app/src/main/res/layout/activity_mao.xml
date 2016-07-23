@@ -7,7 +7,7 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    android:orientation="horizontal"
+    android:orientation="vertical"
     tools:context="com.mao.activitylifecycle.MaoActivity">
 
     <Button
@@ -16,10 +16,17 @@
         android:layout_height="wrap_content"
         android:text="启动第二个Activity"
         android:textAllCaps="false"/>
+
     <EditText
         android:id="@+id/activity_mao_edittext"
-        android:layout_width="0dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+    <Button
+        android:id="@+id/activity_mao_third_button"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_weight="1"/>
+        android:text="启动第三个Activity"
+        android:textAllCaps="false"/>
 
 </LinearLayout>
