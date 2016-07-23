@@ -6,22 +6,31 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.Toast;
 
 public class MaoActivity extends AppCompatActivity {
     private static final String TAG = "MaoActivity";
+    public static final String BOOK_NAME_OF_CATEGORY_PHYSICAL="booknameofcategoryphysical";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_mao);
         Log.d(TAG, "onCreate: 执行了");
         Button button = (Button) findViewById(R.id.activity_mao_button);
+        final EditText editText = (EditText) findViewById(R.id.activity_mao_edittext);
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-//                Intent intent = new Intent(MaoActivity.this, ActivitySecond.class);
-//                startActivity(intent);
-                Toast.makeText(MaoActivity.this, "单击按钮", Toast.LENGTH_SHORT).show();
+               //Intent intent = new Intent(MaoActivity.this, ActivitySecond.class);
+                //startActivity(intent);
+                //Toast.makeText(MaoActivity.this, "单击按钮", Toast.LENGTH_SHORT).show();
+                 // String data="传送数据";
+                  Intent intent=new Intent(MaoActivity.this,ActivitySecond.class);
+                  intent.putExtra(BOOK_NAME_OF_CATEGORY_PHYSICAL,editText.getText().toString());
+                  startActivity(intent);
+
+
             }
         });
     }
